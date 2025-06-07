@@ -944,7 +944,25 @@
     transition: background 0.2s, color 0.2s;
 }
 
+.pagination a {
+    border: none;
+    background: #fff;
+    color: #444;
+    font-size: 15px;
+    padding: 6px 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background 0.2s, color 0.2s;
+}
+
 .pagination button.active {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+.pagination a.active {
     background: #222;
     color: #fff;
     border-color: #222;

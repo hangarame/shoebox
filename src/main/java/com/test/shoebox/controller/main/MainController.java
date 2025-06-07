@@ -250,6 +250,8 @@ public class MainController {
 		sbForQueryString.append("\">%d</a>");
 		
 		
+		
+		
 		System.out.println("sbForSort: " + sbForSort.toString());
 		
 		
@@ -259,7 +261,15 @@ public class MainController {
 		Page<ProductListDTO> productList = listProductService.getProductList(pageRequest, targetCustomerType, categoriesId, brandId, startPrice, endPrice, search, searchWord, optNewItem);
 		
 		for(int i=0; i<productList.getTotalPages(); i++) {
-			sb.append(sbForQueryString.toString().formatted(i, sbForSort, i+1));
+			
+			if(i == productList.getNumber()) {
+				
+				sb.append(sbForQueryString.toString().replace("\">%d</a>", "\" class=\"active\">%d</a>").formatted(i, sbForSort, i+1));
+				
+			} else {
+				sb.append(sbForQueryString.toString().formatted(i, sbForSort, i+1));
+			}
+
 		}
 		
 		System.out.println("TotalPages: " + productList.getTotalPages());
