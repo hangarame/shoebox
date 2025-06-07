@@ -17,12 +17,12 @@
 				style="display: flex; flex-direction: column;">
 				<!-- 이미지/썸네일 -->
 				<div class="product-gallery">
-					<img th:src="'/common/images/' + ${firstImage.fileName}"
+					<img th:src="'/common/images/product/' + ${firstImage.fileName}"
 						class="product-main-img" id="mainImg" alt="">
 
 					<div class="product-thumbs">
 						<img th:each="item : ${productImageDTOList}"
-							th:src="'/common/images/' + ${item.fileName}"
+							th:src="'/common/images/product/' + ${item.fileName}"
 							class="product-thumb" alt="" onclick="switchImg(this)">
 					</div>
 

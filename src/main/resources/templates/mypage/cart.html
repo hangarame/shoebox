@@ -300,7 +300,7 @@
 						<td>
 							<!-- 이미지가 있는 경우 --> <img class="cart-img"
 							th:if="${not #lists.isEmpty(item.productStock.product.productImages)}"
-							th:src="@{'/common/images/' + ${item.productStock.product.productImages[0].fileName}}"
+							th:src="@{'/common/images/product/' + ${item.productStock.product.productImages[0].fileName}}"
 							alt="product-image"> <!-- 이미지가 없는 경우 --> <img
 							class="cart-img"
 							th:unless="${not #lists.isEmpty(item.productStock.product.productImages)}"

@@ -83,7 +83,7 @@
 			<div class="product-row" th:each="item : ${selectedItems}">
 				<img class="product-img"
 					th:if="${not #lists.isEmpty(item.productStock.product.productImages)}"
-					th:src="@{'/common/images/' + ${item.productStock.product.productImages[0].fileName}}"
+					th:src="@{'/common/images/product/' + ${item.productStock.product.productImages[0].fileName}}"
 					alt="product-image">
 				<img class="product-img"
 					th:unless="${not #lists.isEmpty(item.productStock.product.productImages)}"

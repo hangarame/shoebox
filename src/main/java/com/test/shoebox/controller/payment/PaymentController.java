@@ -22,6 +22,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
+@RequiredArgsConstructor
+@Slf4j
 @Controller
 @RequestMapping("/payment")
 public class PaymentController {

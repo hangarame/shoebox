@@ -122,18 +122,33 @@ public class MembersService {
         // 4. 쿠폰 정보
         List<Object[]> couponResults = issuedCouponRepository.findValidCouponsByMembersId(membersId);
         //FIXME
+//        List<IssuedCouponDTO> issuedCoupons = couponResults.stream()
+//            .map(result -> new IssuedCouponDTO(
+//                toLong(result[0]),
+//                ((Timestamp) result[1]).toLocalDateTime(),
+//                ((Timestamp) result[2]).toLocalDateTime(),
+//                toLong(result[3]),
+//                toLong(result[4]),
+//                (String) result[5],
+//                toDouble(result[6]),
+//                result[7] != null ? toInt(result[7]) : null,
+//                result[8] != null ? toInt(result[8]) : null
+//            )).collect(Collectors.toList());
+        
         List<IssuedCouponDTO> issuedCoupons = couponResults.stream()
-            .map(result -> new IssuedCouponDTO(
-                toLong(result[0]),
-                ((Timestamp) result[1]).toLocalDateTime(),
-                ((Timestamp) result[2]).toLocalDateTime(),
-                toLong(result[3]),
-                toLong(result[4]),
-                (String) result[5],
-                toDouble(result[6]),
-                result[7] != null ? toInt(result[7]) : null,
-                result[8] != null ? toInt(result[8]) : null
-            )).collect(Collectors.toList());
+        		.map(result -> IssuedCouponDTO.builder()
+        				.issuedCouponId(toLong(result[0]))
+        				.issueDatetime(((Timestamp) result[1]).toLocalDateTime())
+        				.expireDatetime(((Timestamp) result[2]).toLocalDateTime())
+        				.membersId(toLong(result[3]))
+        				.couponId(toLong(result[4]))
+        				.couponName((String) result[5])
+        				.discountRate(toDouble(result[6]))
+        				.minPrice(result[7] != null ? toInt(result[7]) : null)
+        				.maxDiscountPrice(result[8] != null ? toInt(result[8]) : null)
+        				.build()
+        		).collect(Collectors.toList());
+        
 
      // 5. 채팅 정보 조회
         List<Object[]> chatResults = chatMessageRepository.findChatMessagesByMembersId(membersId);
